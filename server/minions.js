@@ -3,7 +3,7 @@ const db = require('./db');
 
 const minionsRouter = express.Router();
 
-//create minion parameter
+//create minion param
 minionsRouter.param('minionId', (req, res, next, id) => {
     const minion = db.getFromDatabaseById('minions', id);
     if (minion) {
@@ -16,7 +16,8 @@ minionsRouter.param('minionId', (req, res, next, id) => {
 
 // Return an array of all minions
 minionsRouter.get('/', (req, res, next) => {
-   res.send(db.getAllFromDatabase('minions'));
+    const minions = db.getAllFromDatabase('minions');
+   res.send(minions);
 })
 
 
